@@ -30,6 +30,12 @@ def create():
 
         if not title:
             error = 'Title is required.'
+        elif len(title) > 50:
+            error = 'Title is too large (it has more than 50 characters).'
+        if len(body) > 500:
+            if error is not None:
+                error += '\n'
+            error += 'Body is too large (it has more than 500 characters).'
 
         if error is not None:
             flash(error)
@@ -75,6 +81,12 @@ def update(id):
 
         if not title:
             error = 'Title is required.'
+        elif len(title) > 50:
+            error = 'Title is too large (it has more than 50 characters).'
+        if len(body) > 500:
+            if error is not None:
+                error += '\n'
+            error += 'Body is too large (it has more than 500 characters).'
 
         if error is not None:
             flash(error)
