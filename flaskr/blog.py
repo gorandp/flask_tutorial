@@ -34,8 +34,8 @@ def create():
             error = 'Title is required.'
 
         if error is None:
-            e = char_limit(title, 50, 'title')
-            e += char_limit(body, 500, 'body')
+            e = char_limit(title, 50, 'Title')
+            e += char_limit(body, 500, 'Body')
             if e:
                 error = e
 
