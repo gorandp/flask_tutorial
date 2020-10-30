@@ -6,6 +6,8 @@ from werkzeug.exceptions import abort
 from flaskr.auth import login_required
 from flaskr.db import get_db
 
+from .tools import char_limit
+
 bp = Blueprint('blog', __name__)
 
 
@@ -30,12 +32,12 @@ def create():
 
         if not title:
             error = 'Title is required.'
-        elif len(title) > 50:
-            error = 'Title is too large (it has more than 50 characters).'
-        if len(body) > 500:
-            if error is not None:
-                error += '\n'
-            error += 'Body is too large (it has more than 500 characters).'
+
+        if error is None:
+            e = char_limit(title, 50, 'title')
+            e += char_limit(body, 500, 'body')
+            if e:
+                error = e
 
         if error is not None:
             flash(error)
@@ -81,12 +83,12 @@ def update(id):
 
         if not title:
             error = 'Title is required.'
-        elif len(title) > 50:
-            error = 'Title is too large (it has more than 50 characters).'
-        if len(body) > 500:
-            if error is not None:
-                error += '\n'
-            error += 'Body is too large (it has more than 500 characters).'
+
+        if error is None:
+            e = char_limit(title, 50, 'Title')
+            e += char_limit(body, 500, 'Body')
+            if e:
+                error = e
 
         if error is not None:
             flash(error)

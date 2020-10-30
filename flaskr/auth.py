@@ -7,6 +7,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from flaskr.db import get_db
 
+from .tools import char_limit
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
@@ -18,6 +19,11 @@ def register():
         password = request.form['password']
         db = get_db()
         error = None
+
+        e = char_limit(username, 15, 'Username')
+        e += char_limit(password, 50, 'Password')
+        if e:
+            error = e
 
         if not username:
             error = 'Username is required.'
