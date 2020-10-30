@@ -12,6 +12,6 @@ script:
   - pytest
 
 # public environment variables
-# env:
-#   - MYVAR=VALUE
-#     MYVAR2='MY LONG VALUE'
+env:
+  - FLASK_APP=flaskr
+    FLASK_ENV=development
