@@ -72,6 +72,18 @@ def test_update(client, auth, app):
         assert post['title'] == 'updated'
 
 
+@pytest.mark.parametrize(('path', 'title', 'body', 'message'), (
+    ('/create', 'A'*100, 'A', b'Title is too large'),
+    ('/create', 'A', 'A'*2000, b'Body is too large'),
+    ('/1/update', 'A'*100, 'A', b'Title is too large'),
+    ('/1/update', 'A', 'A'*2000, b'Body is too large'),
+))
+def test_update_long_text(client, auth, app, path, title, body, message):
+    auth.login()
+    response = client.post(path, data={'title': title, 'body': body})
+    assert message in response.data
+
+
 @pytest.mark.parametrize('path', (
     '/create',
     '/1/update',
