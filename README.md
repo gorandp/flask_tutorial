@@ -1,5 +1,7 @@
 # Flask Tutorial
 
-[Flask demo app][1]
+[![Build Status](https://travis-ci.com/gorandp/flask_tutorial.svg?branch=main)](https://travis-ci.com/gorandp/flask_tutorial)
 
-  [1]: <https://flask.palletsprojects.com/en/1.1.x/tutorial/>
+## Flask tutorial
+
+> <https://flask.palletsprojects.com/en/1.1.x/tutorial/>
