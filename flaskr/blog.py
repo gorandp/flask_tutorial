@@ -55,6 +55,15 @@ def create():
 
 
 def get_post(id, check_author=True):
+    """Get post from post id
+
+    Args:
+        id (int): post id
+        check_author (bool, optional): Author checking. Defaults to True.
+
+    Returns:
+        dict: post data
+    """    
     post = get_db().execute(
         'SELECT p.id, title, body, created, author_id, username'
         ' FROM post p JOIN user u ON p.author_id = u.id'
