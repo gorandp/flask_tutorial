@@ -117,6 +117,13 @@ def update(id):
 @bp.route('/<int:id>/delete', methods=('POST',))
 @login_required
 def delete(id):
+    """delete a post
+
+    :param id: post id
+    :type id: int
+    :return: response object
+    :rtype: Response
+    """    
     get_post(id)
     db = get_db()
     db.execute('DELETE FROM post WHERE id = ?', (id,))
