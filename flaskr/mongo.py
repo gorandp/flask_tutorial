@@ -30,6 +30,7 @@ class DB(metaclass=Singleton):
         **kwargs
     ) -> None:
         """ Establish connection with DB """
+        DATABASE_NAME = DATABASE_NAME if DATABASE_NAME else "flaskr"
         if DB_CONNECTION_STRING is not None:
             # Connection String 
             #
