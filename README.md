@@ -17,6 +17,7 @@ Tutorial: <https://flask.palletsprojects.com/en/1.1.x/tutorial/>
 - <https://sqlite.org/lang.html>
 - <https://github.com/pallets/flask/blob/1.1.2/examples/tutorial/flaskr/static/style.css>
 - <https://flask.palletsprojects.com/en/1.1.x/tutorial/deploy/>
+- <https://packaging.python.org/guides/using-manifest-in/>
 
 ## Flask Tutorial Ideas
 
